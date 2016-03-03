@@ -1,0 +1,61 @@
+﻿<style>
+    input[type=radio] 
+    {
+        padding: 10px;
+        width: 20px;
+    }
+</style>
+<form name="frmOrderItems" ng-submit="addOrder()" novalidate>
+    <table class="AppFormTableWithOutBorder">
+        <tr>
+            <th colspan="3">Order Items</th>
+        </tr>
+        <tr>
+            <td style="width:20%" align="right">Item : </td>
+            <td style="width:30%">
+                <select name="Item" ng-model="order.Item" ng-change="getItemPrice(order.Item)" required>
+                    <option value="">Select Item</option>
+                    <option ng-repeat="item in itemList" value="{{item.Item}}">{{item.Item}}</option>
+                </select>
+            </td>
+            <td style="width:50%">
+                <div ng-messages="frmOrderItems.Item.$error" ng-if="frmOrderItems.Item.$dirty && frmOrderItems.Item.$invalid">
+                    <div ng-message="required">Item is required.</div>
+                </div> 
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Item Price : </td>
+            <td><input type="text" name="ItemPrice" ng-model="order.ItemPrice" ng-disabled="true" required /></td>
+            <td>
+                <div ng-messages="frmOrderItems.ItemPrice.$error" ng-if="frmOrderItems.ItemPrice.$error && !frmOrderItems.ItemPrice.$pristine">
+                    <div ng-message="required">Item Price is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Quantity : </td>
+            <td><input type="text" name="Quantity" ng-model="order.Quantity" ng-change="getTotalAmount(order.ItemPrice, order.Quantity)" maxlength="2" ng-pattern="/^[0-9]+$/" required /></td>
+            <td>
+                <div ng-messages="frmOrderItems.Quantity.$error" ng-if="frmOrderItems.Quantity.$error && !frmOrderItems.Quantity.$pristine">
+                    <div ng-message="required">Quantity is required.</div>
+                    <div ng-message="pattern">Quantity Should be Numeric.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Total Amount : </td>
+            <td><input type="text" name="TotalAmount" ng-model="order.TotalAmount" ng-disabled="true" required /></td>
+            <td>
+                <div ng-messages="frmOrderItems.TotalAmount.$error" ng-if="frmOrderItems.TotalAmount.$error && !frmOrderItems.TotalAmount.$pristine">
+                    <div ng-message="required">Total Amount is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="center"><input type="submit" ng-disabled="frmOrderItems.$invalid" value="      Add to Cart      "></input></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
