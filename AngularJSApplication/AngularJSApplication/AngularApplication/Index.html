@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Welcome to AngularJS Application</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="CSS/Site.css" rel="stylesheet" type="text/css" />
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js" type="text/javascript"></script>-->
+        <script src="Scripts/angular.min.js" type="text/javascript"></script>
+        <script src="Scripts/angular-route.min.js" type="text/javascript"></script>
+        <script src="Scripts/angular-messages.min.js" type="text/javascript"></script>
+        <script src="Scripts/ngStorage.min.js" type="text/javascript"></script>
+        <script src="Controllers/mainController.js" type="text/javascript"></script>
+        <script src="Controllers/homeController.js" type="text/javascript"></script>
+        <script src="Controllers/loginController.js" type="text/javascript"></script>
+        <script src="Controllers/signInController.js" type="text/javascript"></script>
+        <script src="Controllers/signInUsersListController.js" type="text/javascript"></script>
+        <script src="Controllers/editSignInController.js" type="text/javascript"></script>
+        <script src="Controllers/editSignInByCustomerController.js" type="text/javascript"></script>
+        <script src="Controllers/reportByStateController.js" type="text/javascript"></script>
+        <script src="Controllers/reportByDistrictController.js" type="text/javascript"></script>
+        <script src="Controllers/orderItemsController.js" type="text/javascript"></script>
+        <script src="Controllers/editOrderController.js" type="text/javascript"></script>
+        <script src="Controllers/cartController.js" type="text/javascript"></script>
+        <script src="Controllers/orderHistoryController.js" type="text/javascript"></script>
+        <script src="Controllers/allOrdersListController.js" type="text/javascript"></script>
+        <script src="Controllers/logOutController.js" type="text/javascript"></script>
+        <script src="Scripts/app.js" type="text/javascript"></script>
+        <script src="Scripts/routing.js" type="text/javascript"></script>
+        <script src="Factories/masterFactory.js" type="text/javascript"></script> 
+        <script src="Directives/customDirectives.js" type="text/javascript"></script>
+    </head>
+    <body ng-app="angularApplication" ng-controller="mainController">
+        <div class="float-right">
+            <nav>
+                <ul id="menu">
+                    <li>{{welcome}}</li>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <div>
+                <p class="site-title">AngularJS Application</p>
+            </div>
+            
+            <div class="float-right">
+                <nav>
+                    <div ng-show="menuType === 'Guest'">
+                        <ul id="menu" >
+                            <li><a href="#Home">Home</a></li>
+                            <li><a href="#Login">Login</a></li>
+                            <li><a href="#SignIn">Sign In</a></li>
+                        </ul>
+                    </div>
+                    <ul id="menu" ng-show="menuType === 'Admin'">
+                        <li><a href="#Home">Home</a></li>
+                        <li><a href="#AllOrdersList">All Orders List</a></li>
+                        <li><a href="#ReportByState">Report By State</a></li>
+                        <li><a href="#SignInUsersList">Sign In Users List</a></li>
+                        <li><a href="#LogOut">LogOut</a></li>
+                    </ul>
+                    <ul id="menu" ng-show="menuType === 'Customer'">
+                        <li><a href="#Home">Home</a></li>
+                        <li><a href="#OrderItems">Order Items</a></li>
+                        <li><a href="#Cart">Cart</a></li>
+                        <li><a href="#OrderHistory">Order History</a></li>
+                        <li><a href="#EditSignInByCustomer">Edit Sign In</a></li>
+                        <li><a href="#LogOut">LogOut</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="partialbody" ng-view></div>
+    </body>
+</html>
+

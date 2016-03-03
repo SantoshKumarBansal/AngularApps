@@ -1,0 +1,17 @@
+﻿<form name="frmReportByState" novalidate>
+    <table class="AppFormTableBig">
+        <tr>
+            <th align="center">District</th>
+            <th align="center">Count</th>
+        </tr>
+        <tr ng-repeat ="report in reportByDistrict">
+            <td align="center">
+                {{report.DistrictName}}
+            </td>
+            <td align="center">
+               {{report.Count}}
+            </td>
+        </tr>
+    </table>
+</form>
+
