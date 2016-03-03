@@ -1,0 +1,46 @@
+﻿<form name="frmStudentManagement">
+    <table class="AppFormTableBig">
+        <tr>
+            <th colspan="6">Student List</th>
+        </tr>
+        <tr ng-show="studentsList.length > 0">
+            <td style="width:40%; text-align:center"><b>Name</b></td>
+            <td style="width:20%; text-align:center"><b>E-Mail ID</b></td>
+            <td style="width:10%; text-align:center"><b>Mobile No</b></td>
+            <td style="width:10%; text-align:center"><b>Edit</b></td>
+            <td style="width:10%; text-align:center"><b>Delete</b></td>
+            <td style="width:10%; text-align:center"><b>Manage Attendance</b></td>
+        </tr>
+        <tr ng-repeat ="student in studentsList">
+            <td>
+                {{student.Name}}
+            </td>
+            <td align="center">
+                {{student.EMailID}}
+            </td>
+            <td align="center">
+                {{student.MobileNo}}
+            </td>
+            <td align="center">
+                <input type="button" id="{{studentsList.indexOf(student)}}" value="Edit" ng-click="editStudent($event)" />
+            </td>
+            <td align="center">
+                <input type="button" id="{{studentsList.indexOf(student)}}" value="Delete" ng-click="deleteStudent($event)" />
+            </td>
+            <td align="center">
+                <input type="button" id="{{studentsList.indexOf(student)}}" value="Manage Attendance" ng-click="manageAttendance($event)" />
+            </td>
+        </tr>
+        <tr ng-show="studentsList.length == 0">
+            <td colspan="6" align="center"><b>No Students Found.</b></td>
+        </tr>
+    </table>
+    <table class="AppFormTableWithOutBorder">
+        <tr>
+            <td><a href="#AddStudent/{{TeacherID}}"><b>Add New Student</b></a></td>
+        </tr>
+    </table>
+</form>
+
+
+

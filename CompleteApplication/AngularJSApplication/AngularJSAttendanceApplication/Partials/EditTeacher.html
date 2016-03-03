@@ -1,0 +1,41 @@
+﻿<form name="frmEditTeacher" ng-submit="frmEditTeacher.$valid && editTeacher()" novalidate>
+    <table class="AppFormTableWithOutBorder">
+        <tr>
+            <th colspan="3">Edit Teacher</th>
+        </tr>
+        <tr>
+            <td style="width:20%" align="right">Name : </td>
+            <td style="width:20%"><input type="text" name="Name" ng-model="teacher.Name" maxlength="200" required /></td>
+            <td style="width:60%">
+                <div ng-messages="frmEditTeacher.Name.$error" ng-if="frmEditTeacher.Name.$error && !frmEditTeacher.Name.$pristine">
+                    <div ng-message="required">Name is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">E-Mail ID : </td>
+            <td><input type="text" name="EMailID" ng-model="teacher.EMailID" maxlength="100" ng-pattern="/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/" required /></td>
+            <td>
+                <div ng-messages="frmEditTeacher.EMailID.$error" ng-if="frmEditTeacher.EMailID.$error && !frmEditTeacher.EMailID.$pristine">
+                    <div ng-message="required">E-Mail ID is required.</div>
+                    <div ng-message="pattern">E-Mail ID Should Valid.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Mobile Number : </td>
+            <td><input type="text" name="MobileNo" ng-model="teacher.MobileNo" maxlength="10" ng-pattern="/^[7-9]{1}[0-9]{9}$/" required /></td>
+            <td>
+                <div ng-messages="frmEditTeacher.MobileNo.$error" ng-if="frmEditTeacher.MobileNo.$error && !frmEditTeacher.MobileNo.$pristine">
+                    <div ng-message="required">Mobile Number is required.</div>
+                    <div ng-message="pattern">Mobile Number Should be Proper and of 10 Digits.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="center"><input type="submit" ng-disabled="frmEditTeacher.$invalid" value="      Edit Teacher      "></input></td>
+            <td></td>
+        </tr>
+    </table>
+</form>

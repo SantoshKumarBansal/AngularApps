@@ -1,0 +1,65 @@
+﻿<form name="frmSignInUsersList" novalidate>
+    <table class="AppFormTableWithOutBorder">
+        <tr>
+            <td style="width:50%" align="right">Search : </td>
+            <td style="width:50%"><input type="text" ng-model="searchTerm"></td>
+        </tr>
+    </table>
+    <table class="AppFormTable">
+        <tr>
+            <th ng-click="orderByMe('UserType')">User Type</th>
+            <th ng-click="orderByMe('Name')">Name</th>
+            <th ng-click="orderByMe('Gender')">Gender</th>
+            <th ng-click="orderByMe('DOB')">DOB</th>
+            <th ng-click="orderByMe('MobileNo')">Mobile No.</th>
+            <th ng-click="orderByMe('EMailID')">E-Mail ID</th>
+            <th ng-click="orderByMe('Address')">Address</th>
+            <th ng-click="orderByMe('State')">State</th>
+            <th ng-click="orderByMe('District')">District</th>
+            <th ng-click="orderByMe('Hobies')">Hobies</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr ng-repeat ="signInUser in signInUsersList | filter:searchTerm | orderBy:myOrderBy:sortType">
+            <td align="center">
+                {{signInUser.UserType}}
+            </td>
+            <td align="center">
+                {{signInUser.Name}}
+            </td>
+            <td align="center">
+                {{signInUser.Gender}}
+            </td>
+            <td align="center">
+                {{signInUser.DOB}}
+            </td>
+            <td align="center">
+                {{signInUser.MobileNo}}
+            </td>
+            <td align="center">
+                {{signInUser.EMailID}}
+            </td>
+            <td align="center">
+                {{signInUser.Address}}
+            </td>
+            <td align="center">
+                {{signInUser.State}}
+            </td>
+            <td align="center">
+                {{signInUser.District}}
+            </td>
+            <td align="center">
+                <span ng-repeat="hobby in signInUser.Hobbies">
+                    {{hobby}}<br />
+                </span>
+            </td>
+            <td align="center">
+               <input type="button" id="{{signInUser._id.$oid}}" value="Edit" ng-click="editSignInInformation($event)"/>
+            </td>
+            <td align="center">
+               <input type="button" id="{{signInUser._id.$oid}}" value="Delete" ng-click="deleteSignInInformation($event)" />
+            </td>
+        </tr>
+    </table>
+</form>
+

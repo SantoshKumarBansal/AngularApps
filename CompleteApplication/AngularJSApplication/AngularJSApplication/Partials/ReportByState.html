@@ -1,0 +1,20 @@
+﻿<form name="frmReportByState" novalidate>
+    <table class="AppFormTableBig">
+        <tr>
+            <th align="center">State</th>
+            <th align="center">Count</th>
+        </tr>
+        <tr ng-repeat ="report in reportByState">
+            <td align="center">
+                <a href="#ReportByDistrict/{{report.StateName}}">{{report.StateName}}</a>
+            </td>
+            <td align="center">
+               {{report.Count}}
+            </td>
+        </tr>
+    </table>
+    <canvas id="polar-area" class="chart chart-polar-area"
+  chart-data="data" chart-labels="labels">
+</canvas> 
+</form>
+

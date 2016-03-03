@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Welcome to AngularJS Attendance Application</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="CSS/Site.css" rel="stylesheet" type="text/css" />
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js" type="text/javascript"></script>-->
+        <script src="Scripts/angular.min.js" type="text/javascript"></script>
+        <script src="Scripts/angular-route.min.js" type="text/javascript"></script>
+        <script src="Scripts/angular-messages.min.js" type="text/javascript"></script>
+        <script src="Scripts/ngStorage.min.js" type="text/javascript"></script>
+        <script src="Controllers/homeController.js" type="text/javascript"></script>
+        <script src="Controllers/teacherManagementController.js" type="text/javascript"></script>
+        <script src="Controllers/addTeacherController.js" type="text/javascript"></script>
+        <script src="Controllers/editTeacherController.js" type="text/javascript"></script>
+        <script src="Controllers/studentManagementController.js" type="text/javascript"></script>
+        <script src="Controllers/addStudentController.js" type="text/javascript"></script>
+        <script src="Controllers/editStudentController.js" type="text/javascript"></script>
+        <script src="Controllers/attendanceManagementController.js" type="text/javascript"></script>
+        <script src="Controllers/addAttendanceController.js" type="text/javascript"></script>
+        <script src="Controllers/editAttendanceController.js" type="text/javascript"></script>
+        <script src="Controllers/uploadAttendanceDataController.js" type="text/javascript"></script>
+        <script src="Scripts/app.js" type="text/javascript"></script>
+        <script src="Scripts/routing.js" type="text/javascript"></script>
+    </head>
+    <body ng-app="angularApplication">
+        <div>
+            <div>
+                <p class="site-title">AngularJS Attendance Application</p>
+            </div>
+            <div class="float-right">
+                <nav>
+                    <div>
+                        <ul id="menu" >
+                            <li><a href="#Home">Home</a></li>
+                            <li><a href="#TeacherManagement">Attendance Management</a></li>
+                            <li><a href="#UploadAttendanceData">Upload Attendance Data</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="partialbody" ng-view></div>
+    </body>
+</html>
+

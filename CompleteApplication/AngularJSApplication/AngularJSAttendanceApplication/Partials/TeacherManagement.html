@@ -1,0 +1,45 @@
+﻿<form name="frmTeacherManagement">
+    <table class="AppFormTableBig">
+        <tr>
+            <th colspan="6">Teachers List</th>
+        </tr>
+        <tr ng-show="teachersList.length > 0">
+            <td style="width:40%; text-align:center"><b>Name</b></td>
+            <td style="width:20%; text-align:center"><b>E-Mail ID</b></td>
+            <td style="width:10%; text-align:center"><b>Mobile No</b></td>
+            <td style="width:10%; text-align:center"><b>Edit</b></td>
+            <td style="width:10%; text-align:center"><b>Delete</b></td>
+            <td style="width:10%; text-align:center"><b>Manage Students</b></td>
+        </tr>
+        <tr ng-repeat ="teacher in teachersList">
+            <td>
+                {{teacher.Name}}
+            </td>
+            <td align="center">
+                {{teacher.EMailID}}
+            </td>
+            <td align="center">
+                {{teacher.MobileNo}}
+            </td>
+            <td align="center">
+                <input type="button" id="{{teachersList.indexOf(teacher)}}" value="Edit" ng-click="editTeacher($event)" />
+            </td>
+            <td align="center">
+                <input type="button" id="{{teachersList.indexOf(teacher)}}" value="Delete" ng-click="deleteTeacher($event)" />
+            </td>
+            <td align="center">
+                <input type="button" id="{{teachersList.indexOf(teacher)}}" value="Manage Students" ng-click="manageStudents($event)" />
+            </td>
+        </tr>
+        <tr ng-show="teachersList.length == 0">
+            <td colspan="6" align="center"><b>No Teachers Found.</b></td>
+        </tr>
+    </table>
+    <table class="AppFormTableWithOutBorder">
+        <tr>
+            <td><a href="#AddTeacher"><b>Add New Teacher</b></a></td>
+        </tr>
+    </table>
+</form>
+
+

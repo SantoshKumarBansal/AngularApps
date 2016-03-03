@@ -1,0 +1,32 @@
+﻿<form name="frmTeachersList" ng-submit="uploadAttendanceData()" novalidate>
+    <div ng-repeat ="teacher in teachersList | orderBy : ['Name', '-MobileNo']" ng-show="teachersList.length > 0">
+        <table class="AppFormTableBig">
+            <tr>
+                <th>Teacher Name : {{teacher.Name}}, E-Mail ID : {{teacher.EMailID}}, Mobile No : {{teacher.MobileNo}}</th>
+            </tr>
+        </table>
+        <table class="AppFormTableBig" ng-repeat ="student in teacher.Students | orderBy : 'Name'" ng-show="teacher.Students.length > 0">
+            <tr>
+                <td colspan="2">Student Name : {{student.Name}}, E-Mail ID : {{student.EMailID}}, Mobile No : {{student.MobileNo}}</td>
+            </tr>
+            <tr ng-show="student.Attendance.length > 0">
+                <td style="width:50%" align="center"><b>Date</b></td>
+                <td style="width:50%" align="center"><b>Status</b></td>
+            </tr>
+            <tr ng-repeat ="attendance in student.Attendance | orderBy : 'Date'">
+                <td align="center">
+                    {{attendance.Date | date : 'dd/MM/yyyy'}}
+                </td>
+                <td align="center">
+                    {{attendance.Status}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table class="AppFormTableWithOutBorder" ng-show="teachersList.length > 0">
+        <tr>
+            <td align="center"><input type="submit" value="      Upload Attendance Data      "></input></td>
+        </tr>
+    </table>
+</form>
+

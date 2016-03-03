@@ -1,0 +1,138 @@
+﻿<style>
+    input[type=radio] 
+    {
+        padding: 10px;
+        width: 30px;
+    }
+    input[type=checkbox] 
+    {
+        padding: 10px;
+        width: 30px;
+    }
+</style>
+<form name="frmEditSignIn" ng-submit="editSignInInformation()" novalidate>
+    <table class="AppFormTableWithOutBorder">
+        <tr>
+            <th colspan="3">Edit Sign In</th>
+        </tr>
+        <tr>
+            <td align="right">User Type : </td>
+            <td>
+                <select name="UserType" ng-model="signIn.UserType" required>
+                    <option value="">Select User Type</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Customer">Customer</option>
+                </select>
+            </td>
+            <td>
+                <div ng-messages="frmEditSignIn.UserType.$error" ng-if="frmEditSignIn.UserType.$dirty && frmEditSignIn.UserType.$invalid">
+                    <div ng-message="required">User Type is required.</div>
+                </div> 
+            </td>
+        </tr>
+        <tr>
+            <td style="width:20%" align="right">Name : </td>
+            <td style="width:20%"><input type="text" name="Name" ng-model="signIn.Name" maxlength="200" ng-pattern="/^[a-zA-Z' ]+$/" required /></td>
+            <td style="width:60%">
+                <div ng-messages="frmEditSignIn.Name.$error" ng-if="frmEditSignIn.Name.$error && !frmEditSignIn.Name.$pristine">
+                    <div ng-message="required">Name is required.</div>
+                    <div ng-message="pattern">Name must contain only alphabets,' and space.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Gender : </td>
+            <td>
+                <input type="radio" name="Gender" ng-model="signIn.Gender" value="Male" required />Male
+                <input type="radio" name="Gender" ng-model="signIn.Gender" value="Female" required />Female
+                <input type="radio" name="Gender" ng-model="signIn.Gender" value="Transgender" required />Transgender
+            </td>
+            <td>
+                <div ng-messages="frmEditSignIn.Gender.$error" ng-if="frmEditSignIn.Gender.$error && !frmEditSignIn.Gender.$pristine">
+                    <div ng-message="required">Gender is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">DOB : </td>
+            <td><input type="date" name="DOB" ng-model="signIn.DOB" maxlength="10" required /></td>
+            <td>
+                <div ng-messages="frmEditSignIn.DOB.$error" ng-if="frmEditSignIn.DOB.$error && !frmEditSignIn.DOB.$pristine">
+                    <div ng-message="required">DOB is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Mobile Number : </td>
+            <td><input type="text" name="MobileNo" ng-model="signIn.MobileNo" maxlength="10" ng-pattern="/^[7-9]{1}[0-9]{9}$/" required /></td>
+            <td>
+                <div ng-messages="frmEditSignIn.MobileNo.$error" ng-if="frmEditSignIn.MobileNo.$error && !frmEditSignIn.MobileNo.$pristine">
+                    <div ng-message="required">Mobile Number is required.</div>
+                    <div ng-message="pattern">Mobile Number Should be Proper and of 10 Digits.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">E-Mail ID : </td>
+            <td><input type="text" name="EMailID" ng-model="signIn.EMailID" ng-disabled="true" maxlength="100" ng-pattern="/^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/" required /></td>
+            <td>
+                <div ng-messages="frmEditSignIn.EMailID.$error" ng-if="frmEditSignIn.EMailID.$error && !frmEditSignIn.EMailID.$pristine">
+                    <div ng-message="required">E-Mail ID is required.</div>
+                    <div ng-message="pattern">E-Mail ID Should Valid.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Address : </td>
+            <td><textarea name="Address" ng-model="signIn.Address" required style="width:96%"></textarea></td>
+            <td>
+                <div ng-messages="frmEditSignIn.Address.$error" ng-if="frmEditSignIn.Address.$error && !frmEditSignIn.Address.$pristine">
+                    <div ng-message="required">Address is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">State : </td>
+            <td>
+                <select name="State" ng-model="signIn.State" ng-change="getDistrictList(signIn.State)" required>
+                    <option value="">Select State</option>
+                    <option ng-repeat="state in stateList" value="{{state.StateName}}">{{state.StateName}}</option>
+                </select>
+            </td>
+            <td>
+                <div ng-messages="frmEditSignIn.State.$error" ng-if="frmEditSignIn.State.$dirty && frmEditSignIn.State.$invalid">
+                    <div ng-message="required">State is required.</div>
+                </div> 
+            </td>
+        </tr>
+        <tr>
+            <td align="right">District : </td>
+            <td>
+                <select name="State" ng-model="signIn.District" required>
+                    <option value="">Select District</option>
+                    <option ng-repeat="district in districtList" value="{{district.DistrictName}}">{{district.DistrictName}}</option>
+                </select>
+            </td>
+            <td>
+                <div ng-messages="frmEditSignIn.District.$error" ng-if="frmEditSignIn.District.$dirty && frmEditSignIn.District.$invalid">
+                    <div ng-message="required">District is required.</div>
+                </div> 
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Hobbies : </td>
+            <td>
+                <span ng-repeat="hobby in hobbiesList">
+                    <input type="checkbox" name="Hobbies" value="{{hobby}}" ng-checked="hobbiesSelection.indexOf(hobby) > -1" ng-click="toggleHobbies(hobby)" required />{{hobby}} 
+                </span>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="center"><input type="submit" ng-disabled="frmEditSignIn.$invalid" value="      Edit Sign In      "></input></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+

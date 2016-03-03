@@ -1,0 +1,40 @@
+﻿<style>
+    input[type=radio] 
+    {
+        padding: 10px;
+        width: 30px;
+    }
+</style>
+<form name="frmEditAttendance" ng-submit="frmEditAttendance.$valid && editAttendance()" novalidate>
+    <table class="AppFormTableWithOutBorder">
+        <tr>
+            <th colspan="3">Edit Attendance</th>
+        </tr>
+        <tr>
+            <td style="width:20%" align="right">Date : </td>
+            <td style="width:20%"><input type="date" name="Date" ng-model="attendance.Date" maxlength="10" required /></td>
+            <td style="width:60%">
+                <div ng-messages="frmEditAttendance.Date.$error" ng-if="frmEditAttendance.Date.$error && !frmEditAttendance.Date.$pristine">
+                    <div ng-message="required">Date is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">Status : </td>
+            <td>
+                <input type="radio" name="Status" ng-model="attendance.Status" value="Present" required />Present
+                <input type="radio" name="Status" ng-model="attendance.Status" value="Absent" required />Absent
+            </td>
+            <td>
+                <div ng-messages="frmEditAttendance.Status.$error" ng-if="frmEditAttendance.Status.$error && !frmEditAttendance.Status.$pristine">
+                    <div ng-message="required">Status is required.</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="center"><input type="submit" ng-disabled="frmEditAttendance.$invalid" value="      Edit Attendance      "></input></td>
+            <td></td>
+        </tr>
+    </table>
+</form>

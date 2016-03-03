@@ -1,0 +1,4 @@
+D:\AngularJSApplication\AngularJSApplication\bin\AngularJSApplication.dll
+D:\AngularJSApplication\AngularJSApplication\bin\AngularJSApplication.pdb
+D:\AngularJSApplication\AngularJSApplication\obj\Debug\AngularJSApplication.dll
+D:\AngularJSApplication\AngularJSApplication\obj\Debug\AngularJSApplication.pdb

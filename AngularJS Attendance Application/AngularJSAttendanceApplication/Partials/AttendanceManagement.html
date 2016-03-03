@@ -1,0 +1,39 @@
+﻿<form name="frmAttendanceManagement">
+    <table class="AppFormTableBig">
+        <tr>
+            <th colspan="4">Attendance List</th>
+        </tr>
+        <tr ng-show="studentsList.length > 0">
+            <td style="width:30%; text-align:center"><b>Date</b></td>
+            <td style="width:30%; text-align:center"><b>Status</b></td>
+            <td style="width:20%; text-align:center"><b>Edit</b></td>
+            <td style="width:20%; text-align:center"><b>Delete</b></td>
+        </tr>
+        <tr ng-repeat ="attendance in attendanceList">
+            <td align="center">
+                {{attendance.Date | date : 'dd/MM/yyyy'}}
+            </td>
+            <td align="center">
+                {{attendance.Status}}
+            </td>
+            <td align="center">
+                <input type="button" id="{{attendanceList.indexOf(attendance)}}" value="Edit" ng-click="editAttendance($event)" />
+            </td>
+            <td align="center">
+                <input type="button" id="{{attendanceList.indexOf(attendance)}}" value="Delete" ng-click="deleteAttendance($event)" />
+            </td>
+        </tr>
+        <tr ng-show="attendanceList.length == 0">
+            <td colspan="4" align="center"><b>No Attendance Found.</b></td>
+        </tr>
+    </table>
+    <table class="AppFormTableWithOutBorder">
+        <tr>
+            <td style="width:50%;"><a href="#AddAttendance/{{TeacherID}}/{{StudentID}}"><b>Add New Attendance</b></a></td>
+            <td style="width:50%;"><a href="#StudentManagement/{{TeacherID}}"><b>Select Other Student for Attendance Entry</b></a></td>
+        </tr>
+    </table>
+</form>
+
+
+
